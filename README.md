@@ -1,7 +1,7 @@
 # ImageHoster
-UpGrad Assignment Shrish
+UpGrad Assignment - Shrish Bajpai
 
-Image hoster application allowas users to login, register, view and manage images. In addition - user can upload new new images, manage own images and tags and add and view comments to any image.
+Image hoster application allows users to login, register, view and manage images. In addition - user can upload new new images, manage own images and tags and add and view comments to any image.
 
 Configuration
 server.port = 8080
