@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Controller
@@ -51,6 +53,13 @@ public class UserController {
             redirectAttrs.addAttribute("passwordTypeError", error).addFlashAttribute("passwordTypeError", error);
             return "redirect:/users/registration";
         }
+    }
+
+    private Boolean isPasswordStrong(String userPassword) {
+        Pattern p = Pattern.compile("(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(userPassword);
+
+        return m.find();
     }
 
     //This controller method is called when the request pattern is of type 'users/login'
