@@ -171,10 +171,23 @@ public class ImageController {
         return tags;
     }
 
+    //Method to determine if the user is the image owner
+    private Boolean isImageOwner(Integer imageId, HttpSession session) {
+        Image currentImageData = imageService.getImage(imageId);
+        Integer currentImageOwnerId = currentImageData.getUser().getId();
+
+        User loggedInUser = (User) session.getAttribute("loggeduser");
+        Integer loggedInUserId = loggedInUser.getId();
+
+        return loggedInUserId.equals(currentImageOwnerId);
+
+    }
 
     //The method receives the list of all tags
     //Converts the list of all tags to a single string containing all the tags separated by a comma
     //Returns the string
+
+
     private String convertTagsToString(List<Tag> tags) {
         StringBuilder tagString = new StringBuilder();
 
